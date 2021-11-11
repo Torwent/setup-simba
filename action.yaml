@@ -14,19 +14,21 @@ inputs:
     required: false
 
 outputs:
-  path: ${{ steps.simba.outputs.path }} # map step output to job output
+  path:
+    description: Simba.exe path
 
 runs:
   using: "composite"
   steps:
     - name: Setup Simba
-      id: simba
       run: |
         mkdir ./Simba
         curl --retry 5 -L -o ./Simba/Simba.exe https://github.com/ollydev/Simba/releases/download/autobuild-simba1400/Simba-Win32.exe
         mkdir ./Simba/Includes/
         mkdir ./Simba/Scripts/
-        echo "::set-output name=path::${{ github.action_path }}Simba\Simba.exe"
+        path="${{ github.action_path }}Simba\Simba.exe"
+        echo $path
+        echo "::set-output name=path::$path"
       shell: bash
 
     - name: Setup SRL
