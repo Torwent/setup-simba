@@ -1,0 +1,18 @@
+on: [push]
+jobs:
+  test:
+    runs-on: windows-latest
+    name: Test Simba Setup
+    steps:
+      - uses: actions/checkout@v2.2.0
+      - name: Setup Simba
+        uses: ./
+        id: simba
+        with:
+          setup-srl: true
+          setup-wasplib: false
+      - name: Check result
+        run: echo "${{ steps.simba.outputs.path }}"
+        shell: bash
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3

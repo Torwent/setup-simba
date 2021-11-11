@@ -1,0 +1,44 @@
+name: Setup Simba
+description: Download and setup Simba
+author: Torwent
+branding:
+  icon: flag
+  color: green
+
+inputs:
+  setup-srl:
+    description: Wether to setup SRL or not
+    required: false
+  setup-wasplib: # id of input
+    description: Wether to setup SRL or not
+    required: false
+
+outputs:
+  path:
+    description: Simba.exe path
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Simba
+      run: |
+        mkdir ./Simba
+        curl --retry 5 -L -o ./Simba/Simba.exe https://github.com/ollydev/Simba/releases/download/autobuild-simba1400/Simba-Win32.exe
+        mkdir ./Simba/Includes/
+        mkdir ./Simba/Scripts/
+        echo "::set-output name=path::$(echo ${{ github.action_path }}Simba\Simba.exe)"
+      shell: bash
+
+    - name: Setup SRL
+      if: ${{ inputs.setup-srl == 'true' }}
+      run: |
+        cd ./Simba/Includes/
+        git clone https://github.com/ollydev/SRL.git
+      shell: bash
+
+    - name: Setup WaspLib
+      if: ${{ inputs.setup-wasplib == 'true' }}
+      run: |
+        cd ./Simba/Includes/
+        git clone https://github.com/Torwent/WaspLib.git
+      shell: bash
