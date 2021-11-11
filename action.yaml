@@ -13,10 +13,6 @@ inputs:
     description: Wether to setup SRL or not
     required: false
 
-outputs:
-  path:
-    description: Simba.exe path
-
 runs:
   using: "composite"
   steps:
@@ -26,9 +22,6 @@ runs:
         curl --retry 5 -L -o ./Simba/Simba.exe https://github.com/ollydev/Simba/releases/download/autobuild-simba1400/Simba-Win32.exe
         mkdir ./Simba/Includes/
         mkdir ./Simba/Scripts/
-        path="${{ github.action_path }}Simba\Simba.exe"
-        echo $path
-        echo "::set-output name=path::$path"
       shell: bash
 
     - name: Setup SRL
