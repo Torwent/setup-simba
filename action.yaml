@@ -26,7 +26,7 @@ runs:
         curl --retry 5 -L -o ./Simba/Simba.exe https://github.com/ollydev/Simba/releases/download/autobuild-simba1400/Simba-Win32.exe
         mkdir ./Simba/Includes/
         mkdir ./Simba/Scripts/
-        echo "::set-output name=path::$(echo ${{ github.action_path }}Simba\Simba.exe)"
+        echo "::set-output name=path::${{ github.action_path }}Simba\Simba.exe"
       shell: bash
 
     - name: Setup SRL

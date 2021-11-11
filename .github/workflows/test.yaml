@@ -12,5 +12,5 @@ jobs:
           setup-srl: true
           setup-wasplib: true
       - name: Check result
-        run: echo "${{ steps.simba.outputs.path }}"
+        run: echo ${{ steps.simba.outputs.path }}
         shell: bash
