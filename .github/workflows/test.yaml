@@ -14,5 +14,3 @@ jobs:
       - name: Check result
         run: echo "${{ steps.simba.outputs.path }}"
         shell: bash
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
