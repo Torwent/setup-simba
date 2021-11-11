@@ -10,7 +10,7 @@ jobs:
         id: simba
         with:
           setup-srl: true
-          setup-wasplib: false
+          setup-wasplib: true
       - name: Check result
         run: echo "${{ steps.simba.outputs.path }}"
         shell: bash
