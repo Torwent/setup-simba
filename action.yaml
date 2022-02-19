@@ -19,7 +19,7 @@ runs:
     - name: Setup Simba
       run: |
         mkdir ./Simba
-        curl --retry 5 -L -o ./Simba/Simba.exe https://github.com/ollydev/Simba/releases/download/autobuild-simba1400/Simba-Win32.exe
+        curl --retry 5 -L -o ./Simba/Simba.exe https://github.com/ollydev/Simba/releases/download/simba1400-lape-update/Simba-Win32.exe
         mkdir ./Simba/Includes/
         mkdir ./Simba/Scripts/
       shell: bash
